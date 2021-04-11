@@ -16,4 +16,5 @@ COPY --from=builder /go/bin /bin
 ENV BOT_TOKEN=token
 ENV APP_ID=12345
 ENV APP_HASH=hash
-CMD ["/app"]
+WORKDIR /data
+CMD ["/bin/app"]
