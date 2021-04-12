@@ -9,9 +9,9 @@ COPY . .
 RUN \
     --mount=type=cache,id=gocache,target=/root/.cache/go-build \
     --mount=type=cache,id=gomodcache,target=/go/pkg \
-    go install
+    go install ./...
 
-FROM scratch
+FROM gcr.io/distroless/static
 COPY --from=builder /go/bin /bin
 ENV BOT_TOKEN=token
 ENV APP_ID=12345
