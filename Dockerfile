@@ -9,7 +9,7 @@ COPY . .
 RUN \
     --mount=type=cache,id=gocache,target=/root/.cache/go-build \
     --mount=type=cache,id=gomodcache,target=/go/pkg \
-    go install
+    go install ./...
 
 FROM gcr.io/distroless/static
 COPY --from=builder /go/bin /bin
